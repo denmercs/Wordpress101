@@ -98,7 +98,7 @@
                                     <!-- Post Navigation
                                                 ============================================= -->
                                     <div class="post-navigation clearfix">
-
+                                        <!-- this is a single post link--> 
                                         <div class="col_half nobottommargin">
                                             <?php previous_post_link(); ?>
                                         </div>
@@ -132,14 +132,17 @@
                                     <h4>Related Posts:</h4>
 
                                     <div class="related-posts clearfix">
-
+                                    <!-- Related post Wordpress Query --> 
                                     <?php 
                                         $categories = get_the_category();
+                                        // customize variable (related post query)
                                         $rp_query = new WP_Query([
                                             'posts_per_page' => 2,
                                             'posts__not_in' => [$post->ID],
                                             'cat' => !empty($categories) ? $categories[0]->term_id : null
                                         ]);
+
+                                        // print_r($categories);
 
                                         if($rp_query->have_posts(  )) {
                                             while($rp_query->have_posts()) {
@@ -167,8 +170,9 @@
                                                         <li><i class="icon-calendar3"></i> <?php echo get_the_date(); ?></li>
                                                         <li><i class="icon-comments"></i> <?php comments_number('0'); ?></li>
                                                     </ul>
-                                                    <div class="entry-content">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                        elit. Mollitia nisi perferendis.</div>
+                                                    <div class="entry-content">
+                                                        <?php the_excerpt(); ?>
+                                                    </div>
                                                     </div>
                                                 </div>
                                             <?php
