@@ -9,6 +9,7 @@
     include(get_theme_file_path('/includes/widgets.php'));
     include(get_theme_file_path('/includes/theme-customizer.php'));
     include(get_theme_file_path('/includes/customizer/social.php'));
+    include(get_theme_file_path('/includes/customizer/misc.php'));
 
     //hooks
     add_action('wp_enqueue_scripts', 'ju_enqueue');
